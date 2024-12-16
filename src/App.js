@@ -2,7 +2,6 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Contacts from "./components/contacts/Contacts";
 import Hero from "./components/hero/Hero";
 import Services from "./components/services/Services";
-import { h1 } from "motion/react-client";
 
 function App() {
   return (
