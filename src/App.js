@@ -9,15 +9,15 @@ function App() {
       <section id="#home">
         <Hero />
       </section>
-      <section id="#services">
+      {/* <section id="#services">
         <Services />
-      </section>
+      </section> */}
       {/* <section id="#portfolio"> */}
       {/* <Portfolio /> */}
       {/* </section> */}
-      <section id="#contacts">
+      {/* <section id="#contacts">
         <Contacts />
-      </section>
+      </section> */}
     </div>
     // <h1>hii</h1>
   );
