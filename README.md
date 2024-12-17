@@ -4,6 +4,7 @@ Welcome to my portfolio website! This is a personal web application built with R
 
 Link : https://vyshakhremesh.github.io/Portfolio_Website/
 
+![image alt](https://github.com/vyshakhRemesh/Portfolio_Website/blob/4048b2bd142ec5d85a0d82ab8051098085c95e1a/Portfolio_Thumbnail.png)
 
 ## Features
 
