@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import "./portfolio.css";
 import { motion, useInView, useScroll, useTransform } from "motion/react";
+import React from "react";
+// import { debounce } from "lodash"; // Use a debounce utility
 
 const items = [
   {
@@ -17,27 +19,6 @@ const items = [
     desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
     link: "/",
   },
-  // {
-  //   id: 3,
-  //   img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
-  //   title: "Real-time Chat Application",
-  //   desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
-  //   link: "/",
-  // },
-  // {
-  //   id: 4,
-  //   img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
-  //   title: "Social Media Project",
-  //   desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
-  //   link: "/",
-  // },
-  // {
-  //   id: 5,
-  //   img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
-  //   title: "Animated Portfolio Website",
-  //   desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
-  //   link: "/",
-  // },
 ];
 
 const imgVariants = {
@@ -75,7 +56,7 @@ const textVariants = {
   },
 };
 
-const ListItem = ({ item }) => {
+const ListItem = React.memo(({ item }) => {
   const ref = useRef();
 
   const isInView = useInView(ref, { margin: "-100px" });
@@ -102,7 +83,7 @@ const ListItem = ({ item }) => {
       </motion.div>
     </div>
   );
-};
+});
 
 const Portfolio = () => {
   // const [containerDistance, setContainerDistance] = useState(0);
@@ -145,6 +126,20 @@ const Portfolio = () => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [containerDistance, setContainerDistance] = useState(0);
 
+  // const updateContainerWidth = useCallback(
+  //   debounce(() => {
+  //     if (containerRef.current) {
+  //       const totalWidth = containerRef.current.scrollWidth - window.innerWidth;
+  //       const rect = containerRef.current.getBoundingClientRect();
+  //       setContainerWidth(totalWidth);
+  //       setContainerDistance(rect.left);
+  //     }
+  //   }, 100), // Debounce for 100ms
+  //   []
+  // );
+
+  // might help for performance optimisation
+
   useEffect(() => {
     const updateContainerWidth = () => {
       if (containerRef.current) {
@@ -155,6 +150,13 @@ const Portfolio = () => {
         setContainerDistance(rect.left);
       }
     };
+
+    //   updateContainerWidth();
+    //   window.addEventListener("resize", updateContainerWidth);
+    //   return () => window.removeEventListener("resize", updateContainerWidth);
+    // }, [updateContainerWidth]);
+
+    // might help for performance
 
     updateContainerWidth(); // Calculate on mount
     window.addEventListener("resize", updateContainerWidth);
@@ -172,6 +174,12 @@ const Portfolio = () => {
     [0, -containerWidth]
   );
 
+  // Calculate width once and memoize
+  // const emptyDivWidth = useMemo(
+  //   () => window.innerWidth - containerDistance,
+  //   [containerDistance]
+  // );
+
   return (
     <div className="portfolio" ref={containerRef}>
       <motion.div
@@ -183,6 +191,7 @@ const Portfolio = () => {
           className="empty"
           style={{
             width: window.innerWidth - containerDistance,
+            // width: emptyDivWidth, //memoized value
             // backgroundColor: "pink",
           }}
         />
