@@ -132,6 +132,7 @@ const Hero = () => {
           <motion.a
             variants={followVariants}
             href="https://www.linkedin.com/in/vyshakhremesh/"
+            target="_blank"
           >
             <img src={`${process.env.PUBLIC_URL}/linkedin.png`} alt="" />
           </motion.a>
@@ -139,6 +140,7 @@ const Hero = () => {
           <motion.a
             variants={followVariants}
             href="https://github.com/vyshakhRemesh?tab=repositories"
+            target="_blank"
           >
             <img src={`${process.env.PUBLIC_URL}/github.png`} alt="" />
           </motion.a>
