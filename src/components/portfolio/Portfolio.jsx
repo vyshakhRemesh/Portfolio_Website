@@ -87,7 +87,7 @@ const ListItem = ({ item }) => {
         animate={isInView ? "animate" : "initial"}
         className="pImg"
       >
-        <img src={item.img} alt="" />
+        <img src={item.img} alt="" loading="loading" />
       </motion.div>
       <motion.div
         variants={textVariants}
@@ -105,8 +105,8 @@ const ListItem = ({ item }) => {
 };
 
 const Portfolio = () => {
-  const [containerDistance, setContainerDistance] = useState(0);
-  const ref = useRef(null);
+  // const [containerDistance, setContainerDistance] = useState(0);
+  // const ref = useRef(null);
 
   // useEffect(() => {
   //   if (ref.current) {
@@ -116,34 +116,69 @@ const Portfolio = () => {
   // }, []);
 
   // FIX: Re-calculate when screen size changes
+  // useEffect(() => {
+  //   const calculateDistance = () => {
+  //     if (ref.current) {
+  //       const rect = ref.current.getBoundingClientRect();
+  //       setContainerDistance(rect.left);
+  //     }
+  //   };
+
+  //   calculateDistance();
+
+  //   window.addEventListener("resize", calculateDistance);
+
+  //   return () => {
+  //     window.removeEventListener("resize", calculateDistance);
+  //   };
+  // }, []);
+
+  // const { scrollYProgress } = useScroll({ target: ref });
+
+  // const xTranslate = useTransform(
+  //   scrollYProgress,
+  //   [0, 1],
+  //   [0, -window.innerWidth * items.length]
+  // );
+
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [containerDistance, setContainerDistance] = useState(0);
+
   useEffect(() => {
-    const calculateDistance = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
+    const updateContainerWidth = () => {
+      if (containerRef.current) {
+        const totalWidth = containerRef.current.scrollWidth - window.innerWidth;
+        setContainerWidth(totalWidth);
+
+        const rect = containerRef.current.getBoundingClientRect();
         setContainerDistance(rect.left);
       }
     };
 
-    calculateDistance();
-
-    window.addEventListener("resize", calculateDistance);
-
-    return () => {
-      window.removeEventListener("resize", calculateDistance);
-    };
+    updateContainerWidth(); // Calculate on mount
+    window.addEventListener("resize", updateContainerWidth);
+    return () => window.removeEventListener("resize", updateContainerWidth);
   }, []);
 
-  const { scrollYProgress } = useScroll({ target: ref });
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
 
   const xTranslate = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, -window.innerWidth * items.length]
+    [0, -containerWidth]
   );
 
   return (
-    <div className="portfolio" ref={ref}>
-      <motion.div className="pList" style={{ x: xTranslate }}>
+    <div className="portfolio" ref={containerRef}>
+      <motion.div
+        className="pList"
+        style={{ x: xTranslate }}
+        transition={{ ease: "easeOut", duration: 0.8 }}
+      >
         <div
           className="empty"
           style={{

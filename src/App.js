@@ -13,7 +13,7 @@ function App() {
         <Services />
       </section> */}
       {/* <section id="#portfolio"> */}
-      {/* <Portfolio /> */}
+      <Portfolio />
       {/* </section> */}
       {/* <section id="#contacts">
         <Contacts />
