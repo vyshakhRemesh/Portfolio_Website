@@ -17,27 +17,27 @@ const items = [
     desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
     link: "/",
   },
-  {
-    id: 3,
-    img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
-    title: "Real-time Chat Application",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
-    link: "/",
-  },
-  {
-    id: 4,
-    img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
-    title: "Social Media Project",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
-    link: "/",
-  },
-  {
-    id: 5,
-    img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
-    title: "Animated Portfolio Website",
-    desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
-    link: "/",
-  },
+  // {
+  //   id: 3,
+  //   img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
+  //   title: "Real-time Chat Application",
+  //   desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
+  //   link: "/",
+  // },
+  // {
+  //   id: 4,
+  //   img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
+  //   title: "Social Media Project",
+  //   desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
+  //   link: "/",
+  // },
+  // {
+  //   id: 5,
+  //   img: "https://sourcebae.com/blog/wp-content/uploads/2023/09/project-planning-header@2x-678x381-1.png",
+  //   title: "Animated Portfolio Website",
+  //   desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure laboriosam tempore consectetur, atque maiores culpa quia, repellat id, dicta esse fugit neque voluptatem provident itaque voluptates minima. Repudiandae, provident hic.",
+  //   link: "/",
+  // },
 ];
 
 const imgVariants = {
@@ -177,7 +177,7 @@ const Portfolio = () => {
       <motion.div
         className="pList"
         style={{ x: xTranslate }}
-        transition={{ ease: "easeOut", duration: 0.8 }}
+        transition={{ ease: "easeOut", duration: 0.6 }}
       >
         <div
           className="empty"
@@ -192,10 +192,10 @@ const Portfolio = () => {
       </motion.div>
       <section />
       <section />
-      <section />
-      <section />
-      <section />
-      {/* <div className="pProgress">
+      {/* <section /> */}
+      {/* <section />
+      <section /> */}
+      <div className="pProgress">
         <svg width="100%" height="100%" viewBox="0 0 160 160">
           <circle
             cx="80"
@@ -216,7 +216,7 @@ const Portfolio = () => {
             transform="rotate(-90 80 80)"
           />
         </svg>
-      </div> */}
+      </div>
     </div>
   );
 };
