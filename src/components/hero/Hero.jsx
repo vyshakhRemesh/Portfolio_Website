@@ -129,11 +129,17 @@ const Hero = () => {
           animate="animate"
           className="follow"
         >
-          <motion.a variants={followVariants} href="/">
+          <motion.a
+            variants={followVariants}
+            href="https://www.linkedin.com/in/vyshakhremesh/"
+          >
             <img src={`${process.env.PUBLIC_URL}/linkedin.png`} alt="" />
           </motion.a>
 
-          <motion.a variants={followVariants} href="/">
+          <motion.a
+            variants={followVariants}
+            href="https://github.com/vyshakhRemesh?tab=repositories"
+          >
             <img src={`${process.env.PUBLIC_URL}/github.png`} alt="" />
           </motion.a>
           {/* <motion.a variants={followVariants} href="/">
