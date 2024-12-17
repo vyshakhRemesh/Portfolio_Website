@@ -1,9 +1,9 @@
 import "./hero.css";
 import Speech from "./Speech";
 import Shape from "./Shape";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 
 const awardVariants = {
   initial: {
@@ -35,8 +35,11 @@ const followVariants = {
 };
 
 const Hero = () => {
+  const ref = useRef();
+  const isInView = useInView(ref);
+
   return (
-    <div className="hero">
+    <div className="hero" ref={ref}>
       <div className="hSection left">
         {/* Title */}
         <motion.h1
@@ -127,11 +130,11 @@ const Hero = () => {
           className="follow"
         >
           <motion.a variants={followVariants} href="/">
-            <img src="/linkedin.png" alt="" />
+            <img src={`${process.env.PUBLIC_URL}/linkedin.png`} alt="" />
           </motion.a>
 
           <motion.a variants={followVariants} href="/">
-            <img src="/github.png" alt="" />
+            <img src={`${process.env.PUBLIC_URL}/github.png`} alt="" />
           </motion.a>
           {/* <motion.a variants={followVariants} href="/">
             <img
@@ -214,7 +217,7 @@ const Hero = () => {
           </Suspense>
         </Canvas>
         <div className="hImg">
-          <img src="/hero.png" alt="heroImage" />
+          <img src={`${process.env.PUBLIC_URL}/hero.png`} alt="heroImage" />
         </div>
       </div>
     </div>
