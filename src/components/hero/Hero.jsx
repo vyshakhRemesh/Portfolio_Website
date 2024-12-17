@@ -44,7 +44,7 @@ const Hero = () => {
         {/* Title */}
         <motion.h1
           initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          animate={isInView ? { y: 0, opacity: 1 } : {}}
           transition={{ ease: "easeInOut", duration: 1 }}
           className="hTitle"
         >
@@ -56,7 +56,7 @@ const Hero = () => {
         <motion.div
           variants={awardVariants}
           initial="initial"
-          animate="animate"
+          animate={isInView ? "animate" : ""}
           className="awards"
         >
           <motion.h2 variants={awardVariants}>Software Engineer</motion.h2>
@@ -126,7 +126,7 @@ const Hero = () => {
         <motion.div
           variants={followVariants}
           initial="initial"
-          animate="animate"
+          animate={isInView ? "animate" : ""}
           className="follow"
         >
           <motion.a
@@ -158,8 +158,8 @@ const Hero = () => {
         <Speech />
         {/* Certificate */}
         <motion.div
-          animate={{ opacity: [0, 1] }}
-          transition={{ duration: 1 }}
+          animate={isInView ? { opacity: [0, 1] } : {}}
+          transition={{ duration: 1.5 }}
           className="certificate"
         >
           <img
@@ -174,13 +174,13 @@ const Hero = () => {
         </motion.div>
         {/* Contact Button */}
         <motion.a
-          animate={{ x: [200, 0], opacity: [0, 1] }}
+          animate={isInView ? { x: [200, 0], opacity: [0, 1] } : {}}
           transition={{ duration: 2 }}
           href="/#contact"
           className="contactLink"
         >
           <motion.div
-            animate={{ rotate: [0, 360] }}
+            animate={isInView ? { rotate: [0, 360] } : {}}
             transition={{ duration: 10, ease: "linear", repeat: Infinity }}
             className="contactButton"
           >
