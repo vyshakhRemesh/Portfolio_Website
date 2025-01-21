@@ -176,7 +176,7 @@ const Hero = () => {
         <motion.a
           animate={isInView ? { x: [200, 0], opacity: [0, 1] } : {}}
           transition={{ duration: 2 }}
-          href="/#contact"
+          href="/#contacts"
           className="contactLink"
         >
           <motion.div
