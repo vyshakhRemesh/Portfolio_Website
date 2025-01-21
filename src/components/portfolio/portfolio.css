@@ -39,7 +39,6 @@
 .pItem:nth-child(5) {
   background: linear-gradient(to right, #2a0159, #d90c65);
 } */
-*/
 
 /* WE'LL NOT GIVE BACKGROUND COLOR TO THE FIRST AND LAST ITEMS (to keep scrolling effect consistent) */
 .pItem:nth-child(3) {
