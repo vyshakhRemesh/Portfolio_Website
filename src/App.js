@@ -6,16 +6,16 @@ import Services from "./components/services/Services";
 function App() {
   return (
     <div className="container">
-      <section id="#home">
+      <section id="home">
         <Hero />
       </section>
-      {/* <section id="#services">
+      {/* <section id="services">
         <Services />
       </section> */}
-      {/* <section id="#portfolio"> */}
+      {/* <section id="portfolio"> */}
       {/* <Portfolio /> */}
       {/* </section> */}
-      <section id="#contacts">
+      <section id="contacts">
         <Contacts />
       </section>
     </div>
