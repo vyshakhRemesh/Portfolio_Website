@@ -36,7 +36,8 @@ const followVariants = {
 
 const Hero = () => {
   const ref = useRef();
-  const isInView = useInView(ref);
+  // const isInView = useInView(ref);
+  const isInView = useInView(ref, { margin: "-200px" });
 
   return (
     <div className="hero" ref={ref}>
